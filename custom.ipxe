@@ -1,12 +1,23 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu
+### netboot.xyz-custom menu example
 ###
 
-:start
-echo Hello world!
-sleep 10
+:custom
+clear custom_choice
+menu This is a Test Menu
+item --gap This is the first sub menu
+item option_one ${space} Loading a kernel and initrd
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
 goto custom_exit
 
+:option_one
+kernel http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/vmlinuz
+initrd http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/initrd.img
+boot || goto custom_exit
+
 :custom_exit
-exit 0
+chain utils.ipxe
+exit
