@@ -16,6 +16,7 @@ goto custom_exit
 :option_one
 kernel http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/vmlinuz
 initrd http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/initrd.img
+squash http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/squashfs.img
 boot || goto custom_exit
 
 :custom_exit
