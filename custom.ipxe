@@ -14,9 +14,10 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/vmlinuz
+set squash_url http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/squashfs.img
+imgfree
+kernel http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/vmlinuz fetch=${squash_url} initrd=initrd.magic
 initrd http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/initrd.img
-squash http://192.168.2.1:8080/Nobara-39-KDE-Nvidia-2024-01-24/squashfs.img
 boot || goto custom_exit
 
 :custom_exit
